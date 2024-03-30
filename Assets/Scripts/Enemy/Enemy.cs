@@ -38,7 +38,8 @@ public class Enemy : MonoBehaviour
         Vector2 currentVelocity = new Vector2(0, body.velocity.y);
         //goes back to idle animation
         animator.ResetTrigger("isWalking");
-
+        animator.ResetTrigger("isAttacking");
+        animator.ResetTrigger("isAttackingUp");
         //walk right
 
         if(player.transform.position.x + 2> gameObject.transform.position.x && isInRunRange)
@@ -87,10 +88,10 @@ public class Enemy : MonoBehaviour
         swordHitbox.SetActive(true);
         swordActions.Attack(player.transform.position);
         if(attackUp)
-            animator.SetTrigger("isAttacking");
+            animator.SetTrigger("isAttackingUp");
         else
            animator.SetTrigger("isAttacking");
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(1);
         swordHitbox.SetActive(false);
         isInRange = false;
     }

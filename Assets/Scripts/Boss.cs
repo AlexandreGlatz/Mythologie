@@ -7,6 +7,8 @@ public class Boss : MonoBehaviour
 {
     [Header("External classes")]
     public Life bossLife;
+    public GameObject boss;
+    
 
     [Header("Boss attributes")]
     public string bossName;
@@ -25,12 +27,5 @@ public class Boss : MonoBehaviour
         
     }
 
-    public IEnumerator startFight(Light2D lampLight)
-    {
-        lampLight.intensity = 0;
-        nextAction = Random.Range(0, 3);
-        yield return new WaitForSeconds(3);
-        lampLight.intensity = 5;
-
-    }
+    
 }

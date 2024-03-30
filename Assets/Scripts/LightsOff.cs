@@ -9,6 +9,8 @@ public class LightsOff : MonoBehaviour
     public Light2D lampLight;
     public bool isLastLight;
     public Boss boss;
+    public Light2D moonLight;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player") 
@@ -21,9 +23,22 @@ public class LightsOff : MonoBehaviour
             }
             else 
             {
-                StartCoroutine(boss.startFight(lampLight));
+                
+                StartCoroutine(StartFight());
             }
         }
         
+    }
+
+    public IEnumerator StartFight()
+    {
+        print("1");
+        yield return new WaitForSeconds(3);
+        print("2");
+        moonLight.gameObject.SetActive(true);
+        boss.gameObject.SetActive(true);
+        lampLight.intensity = 0;
+        Destroy(lampLight);
+        Destroy(gameObject);
     }
 }
