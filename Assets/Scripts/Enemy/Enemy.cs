@@ -69,14 +69,14 @@ public class Enemy : MonoBehaviour
 
         //jump
 
-        //if (isInRange && Random.Range(0,1)==1)
-        //{
-        //    //animator.SetTrigger("isJumping");
-        //    body.AddForce(new Vector2(0, 1) * powerJump);
-        //    canJump = false;
-        //}
-        //else
-        if (isInRange)
+        if (isInRange && Random.Range(0, 2) == 1)
+        {
+            //animator.SetTrigger("isJumping");
+            body.AddForce(new Vector2(0, 1) * powerJump);
+            canJump = false;
+        }
+
+        else if (isInRange)
         {
             StartCoroutine(EnemyAttack());
         }
@@ -86,7 +86,6 @@ public class Enemy : MonoBehaviour
     {
         swordHitbox.SetActive(true);
         swordActions.Attack(player.transform.position);
-        
         //if(attackUp)
         //    animator.SetTrigger("isAttacking");
         //else

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Axe
+  - Sword
   layers:
   - Default
   - TransparentFX

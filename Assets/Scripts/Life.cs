@@ -7,6 +7,7 @@ public class Life : MonoBehaviour
     [Header("Outside classes")]
     public Collider2D[] hitCollision;
     public Collider2D hittedCollision;
+    public PlayerMovements player;
     private SpriteRenderer spriteRenderer;
 
     [Header("Life attributes")]
@@ -82,6 +83,7 @@ public class Life : MonoBehaviour
     {
         //animator.SetTrigger("isDead");
         yield return new WaitForSeconds(.3f);
+
         Destroy(gameObject);
     }
 

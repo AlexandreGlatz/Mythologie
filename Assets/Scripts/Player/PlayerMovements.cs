@@ -16,14 +16,14 @@ public class PlayerMovements : MonoBehaviour
     [Header("Player abilities")]
     public float powerJump;
     public float moveSpeed;
-    public int strength;
+    public int strength = 1;
     public int rollPower;
 
     [Header("Don't touch")]
-    private bool canWalk = true;
-    private bool canJump = true;
     public bool direction;
     public bool attackUp;
+    private bool canWalk = true;
+    private bool canJump = true;
 
     
 
@@ -58,7 +58,19 @@ public class PlayerMovements : MonoBehaviour
             //animator.SetTrigger("isWalking"); //animation
             direction = true;
         }
-        
+        if (Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.LeftControl) && canJump)
+        {
+            //animator.SetTrigger("isRolling");
+            body.AddForce(new Vector2(1, 0) * rollPower);
+            direction = false;
+        }
+
+        if (Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.LeftControl) && canJump)
+        {
+            //animator.SetTrigger("isRolling");
+            body.AddForce(new Vector2(-1, 0) * rollPower);
+            direction = true;
+        }
 
         spriteRenderer.flipX = direction;
         body.velocity = currentVelocity;
@@ -77,12 +89,7 @@ public class PlayerMovements : MonoBehaviour
             body.AddForce(new Vector2(0, -1) * powerJump);
         }
 
-        if (Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.LeftShift) && canJump)
-        {
-            //animator.SetTrigger("isRolling");
-            body.AddForce(new Vector2(1, 0) * rollPower);
-        }
-
+        
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
