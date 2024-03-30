@@ -8,29 +8,36 @@ public class PlayerMovements : MonoBehaviour
     public Rigidbody2D body;
     //public CameraFollow cam;
     //public Animator animator;
-    public SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
+    public GameObject axeHitbox;
+    public PlayerRotation axeActions;
+    public Life playerLife;
 
     [Header("Player abilities")]
     public float powerJump;
     public float moveSpeed;
-    public float dashPower;
+    public float dashSpeed;
+    public int strength;
 
+    [Header("Don't touch")]
     private bool canWalk = true;
     private bool canJump = true;
-    private bool canFastFall = true;
-    private bool direction;
+    public bool direction;
+    public bool attackUp;
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         Vector2 currentVelocity = new Vector2(0, body.velocity.y);
-
         //goes back to idle animation
         //animator.ResetTrigger("isWalking");
         //animator.ResetTrigger("isFalling");
@@ -41,8 +48,7 @@ public class PlayerMovements : MonoBehaviour
         {
             currentVelocity += new Vector2(moveSpeed, 0);
             //animator.SetTrigger("isWalking"); //animation
-            spriteRenderer.flipX = false;
-            direction = true;
+            direction = false;
         }
 
         //walk left
@@ -50,10 +56,9 @@ public class PlayerMovements : MonoBehaviour
         {
             currentVelocity += new Vector2(-moveSpeed, 0);
             //animator.SetTrigger("isWalking"); //animation
-            spriteRenderer.flipX = true;
-            direction = false;
+            direction = true;
         }
-
+        spriteRenderer.flipX = direction;
         body.velocity = currentVelocity;
 
         //jump
@@ -63,22 +68,39 @@ public class PlayerMovements : MonoBehaviour
             //animator.SetTrigger("isJumping");
             body.AddForce(new Vector2(0, 1) * powerJump);
             canJump = false;
-            canFastFall = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.S) && canFastFall)
+        if (Input.GetKeyDown(KeyCode.S) && !canJump)
         {
             body.AddForce(new Vector2(0, -1) * powerJump);
         }
 
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            StartCoroutine(PlayerAttack());
+        }
+
     }
 
+    private IEnumerator PlayerAttack() 
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        axeHitbox.SetActive(true);
+        axeActions.Attack(mousePosition);
+        //if(attackUp)
+        //    animator.SetTrigger("isAttacking");
+        //else
+        //    animator.SetTrigger("isAttacking");
+        yield return new WaitForSeconds(.2f);
+        axeHitbox.SetActive(false);
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
             canJump = true;
-            canFastFall = false;
         }
     }
 
