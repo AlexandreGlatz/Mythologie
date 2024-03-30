@@ -8,6 +8,7 @@ public class Life : MonoBehaviour
     public Collider2D[] hitCollision;
     public Collider2D hittedCollision;
     public PlayerMovements player;
+    public Animator animator;
     private SpriteRenderer spriteRenderer;
 
     [Header("Life attributes")]
@@ -40,6 +41,7 @@ public class Life : MonoBehaviour
         }
         else
         {
+            animator.SetTrigger("isHit");
             StartCoroutine(Blink());
             foreach (Collider2D collider in hitCollision)
             {
@@ -74,7 +76,7 @@ public class Life : MonoBehaviour
 
     public IEnumerator Die()
     {
-        //animator.SetTrigger("isDead");
+        animator.SetTrigger("isDead");
         yield return new WaitForSeconds(.3f);
         gameObject.transform.position = new Vector3(-10, 0.5f, 0);
         healthPoint = initHealthPoint;

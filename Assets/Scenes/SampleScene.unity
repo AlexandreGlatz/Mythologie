@@ -18826,6 +18826,7 @@ MonoBehaviour:
   - {fileID: 4711553830632031387}
   hittedCollision: {fileID: 964690371}
   player: {fileID: 0}
+  animator: {fileID: 0}
   healthPoint: 1
   isPlayer: 0
   isInvincible: 0
@@ -20823,8 +20824,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: -0.08000015
-  m_PointLightOuterRadius: 28.885519
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 28
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -69092,8 +69093,8 @@ Transform:
   m_GameObject: {fileID: 7124271072001988991}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 342.9, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -13.64, y: 2.57, z: 0}
+  m_LocalScale: {x: 8.946693, y: 8.946693, z: 8.946693}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5265785688105401524}
@@ -69130,6 +69131,7 @@ MonoBehaviour:
   body: {fileID: 3717300566447217108}
   axeHitbox: {fileID: 1566759693934288729}
   axeActions: {fileID: 7060578645712971344}
+  animator: {fileID: 7886854545887536243}
   playerLife: {fileID: 7082542336611508741}
   powerJump: 1800
   moveSpeed: 10
@@ -69458,7 +69460,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: -1494457344, guid: b94abdce999a29c43bdefcf080f0b2c8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -69744,7 +69746,8 @@ MonoBehaviour:
   - {fileID: 4392111790625899781}
   - {fileID: 6743709585737380938}
   hittedCollision: {fileID: 7886854545887536242}
-  player: {fileID: 0}
+  player: {fileID: 2465346633539960364}
+  animator: {fileID: 7886854545887536243}
   healthPoint: 3
   isPlayer: 1
   isInvincible: 0
@@ -69762,6 +69765,7 @@ GameObject:
   - component: {fileID: 7082542336611508741}
   - component: {fileID: 3717300566447217108}
   - component: {fileID: 7886854545887536242}
+  - component: {fileID: 7886854545887536243}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Player
@@ -69801,9 +69805,30 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0.01226612, y: 0.015179552}
+  m_Size: {x: 0.33158773, y: 0.49117035}
   m_Direction: 0
+--- !u!95 &7886854545887536243
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7124271072001988991}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 949f05d9f388e3d4cb52a01df819ef8d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &7936187704515913458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69866,6 +69891,7 @@ MonoBehaviour:
   - {fileID: 4711553830632031387}
   hittedCollision: {fileID: 4392111790625899781}
   player: {fileID: 0}
+  animator: {fileID: 0}
   healthPoint: 1
   isPlayer: 0
   isInvincible: 0
@@ -69892,8 +69918,8 @@ Transform:
   m_GameObject: {fileID: 1566759693934288729}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1.5000001, y: 0, z: 0}
-  m_LocalScale: {x: 0.20000009, y: 2, z: 1}
+  m_LocalPosition: {x: 0.35, y: -0.018, z: 0}
+  m_LocalScale: {x: 0.077109456, y: 0.5376412, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5265785688105401524}

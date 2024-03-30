@@ -11,6 +11,7 @@ public class PlayerMovements : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public GameObject axeHitbox;
     public PlayerRotation axeActions;
+    public Animator animator;
     public Life playerLife;
 
     [Header("Player abilities")]
@@ -39,15 +40,19 @@ public class PlayerMovements : MonoBehaviour
         
         Vector2 currentVelocity = new Vector2(0, body.velocity.y);
         //goes back to idle animation
-        //animator.ResetTrigger("isWalking");
-        //animator.ResetTrigger("isFalling");
-        //animator.ResetTrigger("isJumping");
+        animator.ResetTrigger("isWalking");
+        animator.ResetTrigger("isFalling");
+        animator.ResetTrigger("isJumping");
+        animator.ResetTrigger("isRolling");
+        animator.ResetTrigger("isHit");
+        animator.ResetTrigger("isAttacking");
+        animator.ResetTrigger("isAttackingUp");
 
         //walk right
         if (Input.GetKey(KeyCode.D) && canWalk)
         {
             currentVelocity += new Vector2(moveSpeed, 0);
-            //animator.SetTrigger("isWalking"); //animation
+            animator.SetTrigger("isWalking"); //animation
             direction = false;
         }
 
@@ -55,19 +60,22 @@ public class PlayerMovements : MonoBehaviour
         if (Input.GetKey(KeyCode.A) && canWalk)
         {
             currentVelocity += new Vector2(-moveSpeed, 0);
-            //animator.SetTrigger("isWalking"); //animation
+            animator.SetTrigger("isWalking"); //animation
             direction = true;
         }
         if (Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.LeftControl) && canJump)
         {
-            //animator.SetTrigger("isRolling");
+            animator.SetTrigger("isRolling");
+            StartCoroutine(GoDown());
+            body.gameObject.transform.position -= new Vector3(0, 2, 0);
             body.AddForce(new Vector2(1, 0) * rollPower);
             direction = false;
         }
 
         if (Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.LeftControl) && canJump)
         {
-            //animator.SetTrigger("isRolling");
+            animator.SetTrigger("isRolling");
+            
             body.AddForce(new Vector2(-1, 0) * rollPower);
             direction = true;
         }
@@ -79,7 +87,7 @@ public class PlayerMovements : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
-            //animator.SetTrigger("isJumping");
+            animator.SetTrigger("isJumping");
             body.AddForce(new Vector2(0, 1) * powerJump);
             canJump = false;
         }
@@ -89,7 +97,11 @@ public class PlayerMovements : MonoBehaviour
             body.AddForce(new Vector2(0, -1) * powerJump);
         }
 
-        
+        if (body.velocity.y < 0)
+        {
+            animator.SetTrigger("isFalling");
+        }
+
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -98,6 +110,12 @@ public class PlayerMovements : MonoBehaviour
 
     }
 
+    private IEnumerator GoDown()
+    {
+        body.gameObject.transform.position -= new Vector3(0, .5f, 0);
+        yield return new WaitForSeconds(2);
+        body.gameObject.transform.position += new Vector3(0, .5f, 0);
+    }
     private IEnumerator PlayerAttack() 
     {
         Vector3 mousePosition = Input.mousePosition;
@@ -105,17 +123,19 @@ public class PlayerMovements : MonoBehaviour
 
         axeHitbox.SetActive(true);
         axeActions.Attack(mousePosition);
-        //if(attackUp)
-        //    animator.SetTrigger("isAttacking");
-        //else
-        //    animator.SetTrigger("isAttacking");
+        if(attackUp)
+            animator.SetTrigger("isAttackingUp");
+        else
+            animator.SetTrigger("isAttacking");
         yield return new WaitForSeconds(.2f);
+        attackUp = false;
         axeHitbox.SetActive(false);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
+            animator.ResetTrigger("isFalling");
             canJump = true;
         }
     }
