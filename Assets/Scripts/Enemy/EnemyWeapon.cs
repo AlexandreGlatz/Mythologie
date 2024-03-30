@@ -31,12 +31,16 @@ public class EnemyWeapon : MonoBehaviour
         {
             transform.position = new Vector3(entity.transform.position.x + 0.5f, entity.transform.position.y + 0.3f, 0);
             transform.localScale = new Vector3(2.5f, 2, 1);
+            movements.attackUp = true;
+            movements.direction = false;
         }
 
         else if (up && left)
         {
             transform.position = new Vector3(entity.transform.position.x - 0.5f, entity.transform.position.y + 0.3f, 0);
             transform.localScale = new Vector3(2.5f, 2, 1);
+            movements.attackUp = true;
+            movements.direction = true;
         }
 
         else if (right)

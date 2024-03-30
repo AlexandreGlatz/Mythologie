@@ -32,7 +32,7 @@ public class PlayerRotation : MonoBehaviour
         if (up && right)
         {
             transform.position = new Vector3(entity.transform.position.x + 0.5f, entity.transform.position.y + 0.3f, 0);
-            transform.localScale = new Vector3(2, 1.5f, 1);
+            transform.localScale = new Vector3(1, .5f, 1);
             movements.attackUp = true;
             movements.direction = false;
         }
@@ -40,7 +40,7 @@ public class PlayerRotation : MonoBehaviour
         else if (up && left)
         {
             transform.position = new Vector3(entity.transform.position.x - 0.5f, entity.transform.position.y + 0.3f, 0);
-            transform.localScale = new Vector3(2, 1.5f, 1);
+            transform.localScale = new Vector3(1, .5f, 1);
             movements.attackUp = true;
             movements.direction = true;
         }

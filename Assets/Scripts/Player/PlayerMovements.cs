@@ -66,8 +66,6 @@ public class PlayerMovements : MonoBehaviour
         if (Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.LeftControl) && canJump)
         {
             animator.SetTrigger("isRolling");
-            StartCoroutine(GoDown());
-            body.gameObject.transform.position -= new Vector3(0, 2, 0);
             body.AddForce(new Vector2(1, 0) * rollPower);
             direction = false;
         }
@@ -110,12 +108,6 @@ public class PlayerMovements : MonoBehaviour
 
     }
 
-    private IEnumerator GoDown()
-    {
-        body.gameObject.transform.position -= new Vector3(0, .5f, 0);
-        yield return new WaitForSeconds(2);
-        body.gameObject.transform.position += new Vector3(0, .5f, 0);
-    }
     private IEnumerator PlayerAttack() 
     {
         Vector3 mousePosition = Input.mousePosition;

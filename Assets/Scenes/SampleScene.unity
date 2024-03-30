@@ -18847,6 +18847,7 @@ MonoBehaviour:
   playerBehaviour: {fileID: 2465346633539960364}
   swordHitbox: {fileID: 2049031391}
   swordActions: {fileID: 2049031392}
+  animator: {fileID: 0}
   enemyLife: {fileID: 964690373}
   strength: 1
   powerJump: 30
@@ -18856,6 +18857,7 @@ MonoBehaviour:
   isInRunRange: 0
   direction: 0
   canJump: 0
+  attackUp: 0
 --- !u!212 &964690375
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -69042,6 +69044,7 @@ GameObject:
   - component: {fileID: 8981060449053580748}
   - component: {fileID: 6973869948046935956}
   - component: {fileID: 4392111790625899781}
+  - component: {fileID: 8981060449053580749}
   m_Layer: 0
   m_Name: KnightSprite
   m_TagString: Untagged
@@ -69110,7 +69113,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.17233, y: 0.17233, z: 0.17233}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 352539083993577659}
@@ -69148,8 +69151,8 @@ Transform:
   m_GameObject: {fileID: 622951706286829752}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.42, y: -4.86, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 6.59, y: -7.78, z: 0}
+  m_LocalScale: {x: 9.3733, y: 9.3733, z: 9.3733}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2422978809923331570}
@@ -69198,8 +69201,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 1504040369, guid: 8e46dde6316b44b42a6d790f44f3b395, type: 3}
+  m_Color: {r: 0.6933962, g: 0.7389191, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -69323,7 +69326,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 1}
+  m_LocalScale: {x: 1.7233001, y: 0.17233, z: 0.17233}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2868067738377905629}
@@ -69503,8 +69506,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0.0051270947, y: 0.01241122}
+  m_Size: {x: 0.26168764, y: 0.40585947}
   m_Direction: 0
 --- !u!1 &4542310781148865972
 GameObject:
@@ -69846,6 +69849,7 @@ MonoBehaviour:
   playerBehaviour: {fileID: 2465346633539960364}
   swordHitbox: {fileID: 8676518608302086546}
   swordActions: {fileID: 9077904600767695946}
+  animator: {fileID: 8981060449053580749}
   enemyLife: {fileID: 8981060449053580748}
   strength: 1
   powerJump: 30
@@ -69855,6 +69859,7 @@ MonoBehaviour:
   isInRunRange: 0
   direction: 0
   canJump: 0
+  attackUp: 0
 --- !u!1 &8676518608302086546
 GameObject:
   m_ObjectHideFlags: 0
@@ -69891,10 +69896,31 @@ MonoBehaviour:
   - {fileID: 4711553830632031387}
   hittedCollision: {fileID: 4392111790625899781}
   player: {fileID: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 8981060449053580749}
   healthPoint: 1
   isPlayer: 0
   isInvincible: 0
+--- !u!95 &8981060449053580749
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622951706286829752}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 995b5eda5dfe3da438d92ec5bb5aad0a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &9077904600767695946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69934,7 +69960,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 2.7, z: 1}
+  m_LocalScale: {x: 0.51699, y: 0.46529102, z: 0.17233}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2868067738377905629}

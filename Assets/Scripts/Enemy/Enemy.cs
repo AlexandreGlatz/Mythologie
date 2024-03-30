@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public PlayerMovements playerBehaviour;
     public GameObject swordHitbox;
     public EnemyWeapon swordActions;
+    public Animator animator;
     public Life enemyLife;
 
     [Header("enemyAttributes")]
@@ -23,6 +24,7 @@ public class Enemy : MonoBehaviour
     public bool isInRunRange = false;
     public bool direction;
     public bool canJump;
+    public bool attackUp;
 
     private SpriteRenderer spriteRenderer;
 
@@ -35,22 +37,20 @@ public class Enemy : MonoBehaviour
     {
         Vector2 currentVelocity = new Vector2(0, body.velocity.y);
         //goes back to idle animation
-        //animator.ResetTrigger("isWalking");
-        //animator.ResetTrigger("isFalling");
-        //animator.ResetTrigger("isJumping");
+        animator.ResetTrigger("isWalking");
 
         //walk right
 
         if(player.transform.position.x + 2> gameObject.transform.position.x && isInRunRange)
         {
             currentVelocity += new Vector2(runSpeed, 0);
-            //animator.SetTrigger("isWalking"); //animation
+            animator.SetTrigger("isWalking"); //animation
             direction = false;
         }
         if (player.transform.position.x - 2> gameObject.transform.position.x)
         {
             currentVelocity += new Vector2(moveSpeed, 0);
-            //animator.SetTrigger("isWalking"); //animation
+            animator.SetTrigger("isWalking"); //animation
             direction = false;
         }
         
@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
         if (player.transform.position.x +2 < gameObject.transform.position.x)
         {
             currentVelocity += new Vector2(-moveSpeed, 0);
-            //animator.SetTrigger("isWalking"); //animation
+            animator.SetTrigger("isWalking"); //animation
             direction = true;
         }
         
@@ -86,10 +86,10 @@ public class Enemy : MonoBehaviour
     {
         swordHitbox.SetActive(true);
         swordActions.Attack(player.transform.position);
-        //if(attackUp)
-        //    animator.SetTrigger("isAttacking");
-        //else
-        //    animator.SetTrigger("isAttacking");
+        if(attackUp)
+            animator.SetTrigger("isAttacking");
+        else
+           animator.SetTrigger("isAttacking");
         yield return new WaitForSeconds(.2f);
         swordHitbox.SetActive(false);
         isInRange = false;

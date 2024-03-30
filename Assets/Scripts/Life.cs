@@ -41,7 +41,6 @@ public class Life : MonoBehaviour
         }
         else
         {
-            animator.SetTrigger("isHit");
             StartCoroutine(Blink());
             foreach (Collider2D collider in hitCollision)
             {
