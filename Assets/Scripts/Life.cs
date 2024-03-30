@@ -11,6 +11,7 @@ public class Life : MonoBehaviour
 
     [Header("Life attributes")]
     public int healthPoint;
+    private int initHealthPoint;
     public bool isPlayer;
 
     [Header("Don't touch")]
@@ -20,6 +21,7 @@ public class Life : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        initHealthPoint = healthPoint;
     }
 
     public void TakeDamage(int damage)
@@ -74,6 +76,7 @@ public class Life : MonoBehaviour
         //animator.SetTrigger("isDead");
         yield return new WaitForSeconds(.3f);
         gameObject.transform.position = new Vector3(-10, 0.5f, 0);
+        healthPoint = initHealthPoint;
     }
     public IEnumerator MobDeath()
     {

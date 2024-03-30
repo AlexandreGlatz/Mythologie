@@ -16,8 +16,8 @@ public class PlayerMovements : MonoBehaviour
     [Header("Player abilities")]
     public float powerJump;
     public float moveSpeed;
-    public float dashSpeed;
     public int strength;
+    public int rollPower;
 
     [Header("Don't touch")]
     private bool canWalk = true;
@@ -58,6 +58,8 @@ public class PlayerMovements : MonoBehaviour
             //animator.SetTrigger("isWalking"); //animation
             direction = true;
         }
+        
+
         spriteRenderer.flipX = direction;
         body.velocity = currentVelocity;
 
@@ -75,7 +77,14 @@ public class PlayerMovements : MonoBehaviour
             body.AddForce(new Vector2(0, -1) * powerJump);
         }
 
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.LeftShift) && canJump)
+        {
+            //animator.SetTrigger("isRolling");
+            body.AddForce(new Vector2(1, 0) * rollPower);
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             StartCoroutine(PlayerAttack());
         }
@@ -104,5 +113,13 @@ public class PlayerMovements : MonoBehaviour
         }
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Sword")
+        {
+            playerLife.TakeDamage(1);
+        }
+    }
+
+
 }

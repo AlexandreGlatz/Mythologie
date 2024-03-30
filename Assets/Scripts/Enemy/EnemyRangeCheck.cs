@@ -21,7 +21,6 @@ public class EnemyRangeCheck : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            print("inRange");
             enemy.isInRange = true;
         }
     }

@@ -78,7 +78,6 @@ public class Enemy : MonoBehaviour
         //else
         if (isInRange)
         {
-            print("oui");
             StartCoroutine(EnemyAttack());
         }
     }
