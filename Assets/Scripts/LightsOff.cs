@@ -6,6 +6,7 @@ using UnityEngine.Rendering.Universal;
 public class LightsOff : MonoBehaviour
 {
     [Header("External classes")]
+    public GameObject fire;
     public Light2D lampLight;
     public bool isLastLight;
     public Boss boss;
@@ -15,15 +16,14 @@ public class LightsOff : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player") 
         {
+            lampLight.intensity = 0;
             if (!isLastLight)
             {
-                lampLight.intensity = 0;
-                Destroy(lampLight);
+                Destroy(fire);
                 Destroy(gameObject);
             }
             else 
             {
-                
                 StartCoroutine(StartFight());
             }
         }
@@ -32,12 +32,11 @@ public class LightsOff : MonoBehaviour
 
     public IEnumerator StartFight()
     {
-        print("1");
         yield return new WaitForSeconds(3);
-        print("2");
         moonLight.gameObject.SetActive(true);
         boss.gameObject.SetActive(true);
-        lampLight.intensity = 0;
+        yield return new WaitForSeconds(2);
+        boss.StartBossFight();
         Destroy(lampLight);
         Destroy(gameObject);
     }

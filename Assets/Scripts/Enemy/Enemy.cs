@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public GameObject player;
     public PlayerMovements playerBehaviour;
     public GameObject swordHitbox;
-    public EnemyWeapon swordActions;
+    public BossWeapon swordActions;
     public Animator animator;
     public Life enemyLife;
 

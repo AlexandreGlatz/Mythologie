@@ -9,7 +9,7 @@ public class SwitchScene : MonoBehaviour
     public GameObject PlainBg;
     public GameObject ParisBg;
     public Light2D globalLight;
-    private bool lightAcivated = true;
+    public bool lightAcivated = true;
     private bool plainScene = true;
     private bool parisScene = false;
     // Start is called before the first frame update
@@ -33,7 +33,7 @@ public class SwitchScene : MonoBehaviour
         }
     }
 
-    public void OnTriggerExit2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag =="Player")
         {

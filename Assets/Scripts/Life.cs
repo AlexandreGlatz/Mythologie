@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Life : MonoBehaviour
 {
@@ -10,11 +11,14 @@ public class Life : MonoBehaviour
     public PlayerMovements player;
     public Animator animator;
     private SpriteRenderer spriteRenderer;
+    public SwitchScene sceneSwitch;
+    LoadingScreen loadScene;
 
     [Header("Life attributes")]
     public int healthPoint;
     private int initHealthPoint;
     public bool isPlayer;
+    public bool isKing;
 
     [Header("Don't touch")]
     public bool isInvincible;
@@ -64,7 +68,12 @@ public class Life : MonoBehaviour
     {
         if (isPlayer)
         {
+            sceneSwitch.lightAcivated = true;
             StartCoroutine(Die());
+        }
+        else if(isKing)
+        {
+            loadScene.LoadScene(2);
         }
         else
         {
