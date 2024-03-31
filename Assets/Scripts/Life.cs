@@ -12,7 +12,7 @@ public class Life : MonoBehaviour
     public Animator animator;
     private SpriteRenderer spriteRenderer;
     public SwitchScene sceneSwitch;
-    LoadingScreen loadScene;
+    public LoadingScreen loadScene;
 
     [Header("Life attributes")]
     public int healthPoint;

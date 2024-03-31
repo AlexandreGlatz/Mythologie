@@ -24969,9 +24969,10 @@ MonoBehaviour:
   player: {fileID: 0}
   animator: {fileID: 0}
   sceneSwitch: {fileID: 0}
-  healthPoint: 10
+  loadScene: {fileID: 1098282992}
+  healthPoint: 4
   isPlayer: 0
-  isKing: 0
+  isKing: 1
   isInvincible: 0
 --- !u!212 &964690375
 SpriteRenderer:
@@ -75550,7 +75551,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -76407,7 +76408,7 @@ Transform:
   m_GameObject: {fileID: 7124271072001988991}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 339.9, y: 2.57, z: 0}
+  m_LocalPosition: {x: -7.8, y: 2.57, z: 0}
   m_LocalScale: {x: 8.946693, y: 8.946693, z: 8.946693}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -77063,6 +77064,7 @@ MonoBehaviour:
   player: {fileID: 2465346633539960364}
   animator: {fileID: 7886854545887536243}
   sceneSwitch: {fileID: 1508585460}
+  loadScene: {fileID: 0}
   healthPoint: 20
   isPlayer: 1
   isKing: 0
@@ -77211,7 +77213,8 @@ MonoBehaviour:
   player: {fileID: 0}
   animator: {fileID: 8981060449053580749}
   sceneSwitch: {fileID: 0}
-  healthPoint: 10
+  loadScene: {fileID: 0}
+  healthPoint: 0
   isPlayer: 0
   isKing: 0
   isInvincible: 0
